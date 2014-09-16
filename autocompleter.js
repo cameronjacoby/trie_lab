@@ -2,20 +2,20 @@ var Trie = require('./trie.js'),
   fs = require('fs');
 
 Autocompleter = function() {
-  //this.data = new Trie();
-  this.data = [];
+  this.data = new Trie();
+  // this.data = [];
 };
 
 Autocompleter.prototype.complete = function(prefix) {
-  //return this.data.autoComplete(prefix);
-  return this.data.filter(function(str) {
-    return str.substring(0, prefix.length).toLowerCase() === prefix;
-  });
+  return this.data.autoComplete(prefix.toLowerCase());
+  // return this.data.filter(function(str) {
+  //   return str.substring(0, prefix.length).toLowerCase() === prefix;
+  // });
 };
 
 Autocompleter.prototype.add = function(word) {
-  //this.data.learn(word);
-  this.data.push(word);
+  this.data.learn(word.toLowerCase());
+  // this.data.push(word);
   console.log('Learning word:', word);
 };
 
